@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+/* --- Add this animation code below --- */
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px); /* Starts slightly lower */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* Ends in correct position */
+  }
+}
+
+.animate-fade-in {
+  /* Runs the animation for 0.5 seconds with a smooth ease-out curve */
+  animation: fadeInUp 0.5s ease-out forwards;
+}
