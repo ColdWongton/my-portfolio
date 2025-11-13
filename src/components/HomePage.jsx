@@ -112,7 +112,7 @@ const About = () => {
           {/* Image: w-64 h-64 with p-2 padding to zoom out */}
           <div className="relative w-64 h-64 p-2 rounded-full overflow-hidden border-4 border-gray-900 z-10 bg-gray-900">
             <img 
-              src="/profile.png" 
+              src={`${import.meta.env.BASE_URL}profile.png`} 
               alt="Profile" 
               className="w-full h-full object-cover rounded-full" 
             />
