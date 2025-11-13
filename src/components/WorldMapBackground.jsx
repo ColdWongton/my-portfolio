@@ -13,12 +13,10 @@ const WorldMapBackground = () => {
       const rect = canvas.getBoundingClientRect();
       const dpr = window.devicePixelRatio || 1;
 
-      // 1. Set the canvas to the exact pixel size of the screen
+
       canvas.width = rect.width * dpr;
       canvas.height = rect.height * dpr;
 
-      // 2. We do NOT use ctx.scale here. We work in raw physical pixels 
-      // to guarantee perfect alignment with the mouse.
 
       particles = [];
 
@@ -57,7 +55,7 @@ const WorldMapBackground = () => {
       const rect = canvas.getBoundingClientRect();
       const dpr = window.devicePixelRatio || 1;
       
-      // Calculate mouse position in RAW PHYSICAL PIXELS
+      // Calculating mouse position in the raw physical pixels
       mouse.x = (event.clientX - rect.left) * dpr;
       mouse.y = (event.clientY - rect.top) * dpr;
     };
@@ -66,17 +64,14 @@ const WorldMapBackground = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
       const dpr = window.devicePixelRatio || 1;
-      const interactionRadius = 200 * dpr; // Interaction size
+      const interactionRadius = 200 * dpr; // Interaction size/radius
 
       particles.forEach(p => {
         const dx = mouse.x - p.x;
         const dy = mouse.y - p.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
         
-        // --- FIX 1: STOP THE TWITCHING ---
-        // We create a "dead zone" around the cursor. 
-        // If the dot is very close (e.g., 80px), we cap the force calculation there.
-        // This prevents the math from dividing by near-zero numbers.
+        // Edit: TO STOP THE TWITCHING
         const safeDistance = Math.max(distance, 80 * dpr); 
         
         let size = p.size;
@@ -87,13 +82,11 @@ const WorldMapBackground = () => {
           
           const angle = Math.atan2(dy, dx);
           
-          // Move dot towards mouse (Attraction)
+          // Moving the dot towards mouse (Attraction)
           const moveX = Math.cos(angle) * force * (40 * dpr); 
           const moveY = Math.sin(angle) * force * (40 * dpr);
           
-          // --- FIX 2: SMOOTHER MOVEMENT (Friction) ---
-          // Changed 0.1 to 0.05. This adds "weight" to the dots so they 
-          // drift smoothly instead of snapping instantly.
+          // Movement made to be more smooth by editing x and y directly (Friction)
           p.x -= (p.x - (p.originX + moveX)) * 0.05;
           p.y -= (p.y - (p.originY + moveY)) * 0.05;
 
@@ -118,7 +111,7 @@ const WorldMapBackground = () => {
     animate();
 
     window.addEventListener('resize', init);
-    // We listen to 'window' for mouse move to track it even if it leaves the canvas area slightly
+    // listen to 'window' for mouse move to track it even if it leaves the canvas area slightly
     window.addEventListener('mousemove', handleMouseMove);
 
     return () => {

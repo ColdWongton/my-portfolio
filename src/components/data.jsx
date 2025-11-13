@@ -1,6 +1,5 @@
 // src/components/data.jsx
 
-// Make sure 'export' is here
 export const userProfile = {
   name: "Isaac Wong",
   title: "Geospatial Developer and Analyst | GIS Enthusiast",
@@ -16,12 +15,10 @@ export const userProfile = {
 
 };
 
-// And make sure 'export' is here
 export const skillsList = [
   "JavaScript (ES6+) + HTML + CSS", "React.js", "Node.js", "Python", "R", "SQL (PostgreSQL + PostGIS)", "Git + GitHub", "REST APIs", "ESRI ArcGIS Pro + Enterprise + ArcPy", "QGIS", "Google Earth Engine", "ENVI", "FME Flow + Form", "AWS", "Tableau", "PowerBI", "Bash", "Cloud Compare", "Stata"
 ];
 
-// And here
 export const mockProjects = [
   {
     title: "McGill Biodiversity Atlas",
@@ -43,7 +40,6 @@ export const mockProjects = [
   }
 ];
 
-// And here
 export const mockExperience = [
   {
     role: "Geospatial Research Assistant (Full-Time)",

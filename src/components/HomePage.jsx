@@ -97,19 +97,16 @@ const About = () => {
       id="about" 
       title="About Me" 
       icon={<UserIcon className="w-8 h-8 text-indigo-400" />}
-      // Increased to max-w-7xl for VERY wide margins/container
       className="max-w-7xl" 
     >
-      {/* Increased gap to gap-24 to spread image and text further apart */}
       <div className="flex flex-col md:flex-row items-center gap-24">
         
-        {/* --- PROFILE PICTURE SECTION --- */}
+        {/* PROFILE PICTURE */}
         <div className="relative shrink-0 group">
           <div className="absolute inset-[-10px] rounded-full animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0_300deg,#818cf8_360deg)] opacity-70 blur-sm"></div>
           <div className="absolute inset-[-10px] rounded-full animate-[spin_5s_linear_infinite_reverse] bg-[conic-gradient(from_180deg,transparent_0_300deg,#c084fc_360deg)] opacity-70 blur-sm"></div>
           <div className="absolute inset-[-10px] rounded-full animate-[spin_7s_linear_infinite] bg-[conic-gradient(from_90deg,transparent_0_300deg,#22d3ee_360deg)] opacity-60 blur-md"></div>
           
-          {/* Image: w-64 h-64 with p-2 padding to zoom out */}
           <div className="relative w-64 h-64 p-2 rounded-full overflow-hidden border-4 border-gray-900 z-10 bg-gray-900">
             <img 
               src={`${import.meta.env.BASE_URL}profile.png`} 
@@ -119,7 +116,6 @@ const About = () => {
           </div>
         </div>
 
-        {/* Text Content - Kept left aligned within this flex container */}
         <div className="flex-1 text-left">
            <div className="text-gray-300 text-lg leading-relaxed space-y-6">
             <p className="whitespace-pre-line">
@@ -134,9 +130,7 @@ const About = () => {
 
 const Skills = () => {
   return (
-    // Reverted to default width (max-w-4xl)
     <Section id="skills" title="Skills" icon={<StarIcon className="w-8 h-8 text-indigo-400" />}>
-      {/* Reverted to center alignment (default) */}
       <div className="flex flex-wrap gap-3"> 
         {skillsList.map((skill) => (
           <span key={skill} className="bg-indigo-500 text-white text-sm font-medium px-4 py-2 rounded-full shadow-md">
@@ -150,13 +144,10 @@ const Skills = () => {
 
 const Contact = () => {
   return (
-    // Reverted to default width
     <Section id="contact" title="Get In Touch" icon={<MailIcon className="w-8 h-8 text-indigo-400" />}>
-      {/* Reverted to centered text */}
       <p className="text-gray-300 text-lg mb-6 text-center"> 
         I'm always open to discussing new projects, creative ideas, or opportunities. Feel free to reach out!
       </p>
-      {/* Reverted to centered icons */}
       <div className="flex justify-center space-x-8 mt-10"> 
           <a href={userProfile.github} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors flex flex-col items-center">
             <GithubIcon className="w-8 h-8 mb-1" />

@@ -3,15 +3,12 @@ import { Section } from './Section';
 import { mockProjects } from './data';
 import { CodeIcon, ExternalLinkIcon, GithubIcon } from './Icons';
 
-// --- PAGE SECTION COMPONENTS ---
-
 const ProjectCard = ({ project }) => {
   return (
     <div className="bg-gray-800 rounded-lg shadow-xl overflow-hidden transform transition-all hover:scale-[1.02] duration-300">
       <div className="p-6">
         <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
         
-        {/* --- ADD 'whitespace-pre-line' HERE --- */}
         <p className="text-gray-400 mb-4 whitespace-pre-line">
           {project.description}
         </p>
@@ -49,7 +46,7 @@ const Projects = () => {
 };
 
 
-// --- MAIN PAGE COMPONENT ---
+// MAIN PAGE COMPONENT
 export default function ProjectsPage() {
   return (
     <>
