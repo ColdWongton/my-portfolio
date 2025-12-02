@@ -20,13 +20,13 @@ const WorldMapBackground = () => {
 
       particles = [];
 
-      // Grid settings (scaled by DPR so dots look the same size on all screens)
+      // grid settings (scaled by DPR so dots look the same size on all screens)
       const gap = 30 * dpr; 
       const radius = 1.5 * dpr;
       const cols = Math.floor(canvas.width / gap);
       const rows = Math.floor(canvas.height / gap);
 
-      // Center the grid
+      // this centers the grid
       const startX = (canvas.width - (cols * gap)) / 2;
       const startY = (canvas.height - (rows * gap)) / 2;
 
@@ -48,14 +48,14 @@ const WorldMapBackground = () => {
       }
     };
 
-    // Mouse state
+    // mouse state info
     const mouse = { x: undefined, y: undefined };
 
     const handleMouseMove = (event) => {
       const rect = canvas.getBoundingClientRect();
       const dpr = window.devicePixelRatio || 1;
       
-      // Calculating mouse position in the raw physical pixels
+      // for calculating mouse position through raw physical pixels
       mouse.x = (event.clientX - rect.left) * dpr;
       mouse.y = (event.clientY - rect.top) * dpr;
     };
@@ -71,7 +71,6 @@ const WorldMapBackground = () => {
         const dy = mouse.y - p.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
         
-        // Edit: TO STOP THE TWITCHING
         const safeDistance = Math.max(distance, 80 * dpr); 
         
         let size = p.size;
@@ -82,11 +81,10 @@ const WorldMapBackground = () => {
           
           const angle = Math.atan2(dy, dx);
           
-          // Moving the dot towards mouse (Attraction)
+          // code for moving the dot towards mouse (attraction)
           const moveX = Math.cos(angle) * force * (40 * dpr); 
           const moveY = Math.sin(angle) * force * (40 * dpr);
           
-          // Movement made to be more smooth by editing x and y directly (Friction)
           p.x -= (p.x - (p.originX + moveX)) * 0.05;
           p.y -= (p.y - (p.originY + moveY)) * 0.05;
 
@@ -110,8 +108,8 @@ const WorldMapBackground = () => {
     init();
     animate();
 
+    // Even Listeners
     window.addEventListener('resize', init);
-    // listen to 'window' for mouse move to track it even if it leaves the canvas area slightly
     window.addEventListener('mousemove', handleMouseMove);
 
     return () => {
